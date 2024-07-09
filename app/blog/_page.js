@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import { useEffect, useState, useRef } from 'react';
 
+
 const BlogPage = () => {  
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
@@ -13,21 +14,7 @@ const BlogPage = () => {
   const loader = useRef(null);
 
   useEffect(() => {
-    const cachedPosts = localStorage.getItem('posts');
-    const cachedPage = localStorage.getItem('page');
-
-    if (cachedPosts && cachedPage) {
-      setPosts(JSON.parse(cachedPosts));
-      setPage(parseInt(cachedPage));
-    } else {
-      fetchPosts(page);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (page !== 1) {
-      fetchPosts(page);
-    }
+    fetchPosts(page);
   }, [page]);
 
   const fetchPosts = async (page) => {
@@ -45,10 +32,7 @@ const BlogPage = () => {
         setPosts((prevPosts) => {
           const postIds = new Set(prevPosts.map((post) => post.id));
           const newPosts = data.filter((post) => !postIds.has(post.id));
-          const allPosts = [...prevPosts, ...newPosts];
-          localStorage.setItem('posts', JSON.stringify(allPosts));
-          localStorage.setItem('page', page);
-          return allPosts;
+          return [...prevPosts, ...newPosts];
         });
       }
     } catch (error) {
@@ -103,7 +87,7 @@ const BlogPage = () => {
       <div className="postsContainer">
         {posts.map((post) => (
           <div key={post.id} className="post">
-            <h2 className='blog-title list-page'><Link href={`/blog/${post.id}`}>{post.title}</Link></h2>
+            <h2><Link href={`/blog/${post.id}`}>{post.id} - {post.title}</Link></h2>
             <p>{post.body}</p>
           </div>
         ))}

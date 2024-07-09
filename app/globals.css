@@ -42,6 +42,7 @@ body {
     color: #000;
     font-weight: 900;
     text-transform: uppercase;
+
     
   }
   .description {
@@ -118,19 +119,20 @@ h1.page-heading{
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  
-  .post h2 {
-    margin: 0 0 10px 0;
-    font-size: 20px;
-    margin: '0 0 10px 0';
-    color: '#0070f3';
-    color:#0070f3;
-    text-decoration: 'none';
-    cursor: 'pointer';
 
-    &:hover{
-      color:#0056b9;
-    }
+
+  
+  .post h2.blog-title{
+    margin: 0 0 10px 0;
+    font-size: 22px;
+    margin: '0 0 10px 0';
+    color: #000;
+    text-decoration: 'none';
+  }
+
+  .post h2.list-page{
+    color:#0070f3;
+    font-size: 20px;
   }
   
   .post p {
