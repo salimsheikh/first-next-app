@@ -70,14 +70,12 @@ const Page = ({ params }) => {
               <div className="navigation-links">
                 {post.id > 1 && (
                   <Link href={`/blog/${post.id - 1}`} onClick={() => fetchNextPreviousPosts(post.id, -1)}>
-                    Previous Post
-                    {/* <a onClick={() => fetchNextPreviousPosts(post.id, -1)}>Previous Post</a> */}
+                    Previous Post                    
                   </Link>
                 )}
                 {post.id < 100 && (
                   <Link href={`/blog/${post.id + 1}`}  onClick={() => fetchNextPreviousPosts(post.id, 1)}>
-                    Next Post
-                    {/* <a onClick={() => fetchNextPreviousPosts(post.id, 1)}>Next Post</a> */}
+                    Next Post                    
                   </Link>
                 )}                
               </div>
