@@ -47,7 +47,7 @@ const BlogPage = () => {
   return (
     <div>
       <Navbar />      
-      <h1>Blog Posts</h1>
+      <h1>Blog Page</h1>
       <div className="postsContainer">
         {posts.map((post) => (
           <div key={post.id} className="post">

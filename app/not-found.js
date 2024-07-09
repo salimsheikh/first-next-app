@@ -11,7 +11,7 @@ const NotFound = () => {
     // Example of redirecting to home after 5 seconds
      const timer = setTimeout(() => {
         router.push('/');
-     }, 300000);
+     }, 3000);
 
      return () => clearTimeout(timer);
 
