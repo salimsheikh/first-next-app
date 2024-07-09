@@ -162,6 +162,42 @@ h1.page-heading{
     font-size: 18px;
   }
 
+
+.navigation-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: blue;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+  
+}
+
+.back-to-list{
+  text-align: right;
+  margin-top: 15px;
+  .back-link {
+    margin-top: 10px;
+    display: block;
+    text-decoration: none;
+    color: green;
+    
+  }
+}
+
+
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
   
 }
 

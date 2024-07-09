@@ -1,6 +1,7 @@
 'use client'
 import Navbar from '@/app/components/Navbar';
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 const Page = ({ params }) => {
   const id = params.slug;
@@ -37,6 +38,24 @@ const Page = ({ params }) => {
     fetchPost();
   }, [id]);
 
+  // Function to handle fetching next and previous posts
+  const fetchNextPreviousPosts = async (postId, direction) => {
+    try {
+      const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId + direction}`);
+      if (res.ok) {
+        const data = await res.json();
+        setPost(data);
+        localStorage.setItem(`post-${postId + direction}`, JSON.stringify(data));
+      } else {
+        throw new Error(`Error: ${res.status}`);
+      }
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -48,6 +67,25 @@ const Page = ({ params }) => {
             <>
               <h2 className="blog-title single-page">{post.title}</h2>
               <p>{post.body}</p>
+              <div className="navigation-links">
+                {post.id > 1 && (
+                  <Link href={`/blog/${post.id - 1}`} onClick={() => fetchNextPreviousPosts(post.id, -1)}>
+                    Previous Post
+                    {/* <a onClick={() => fetchNextPreviousPosts(post.id, -1)}>Previous Post</a> */}
+                  </Link>
+                )}
+                {post.id < 100 && (
+                  <Link href={`/blog/${post.id + 1}`}  onClick={() => fetchNextPreviousPosts(post.id, 1)}>
+                    Next Post
+                    {/* <a onClick={() => fetchNextPreviousPosts(post.id, 1)}>Next Post</a> */}
+                  </Link>
+                )}                
+              </div>
+              <div className='back-to-list'>
+                <Link href="/blog" className="back-link">
+                  Back to Blog List
+                </Link>
+              </div>
             </>
           ) : (
             <h2>{error ? error : "Post not found"}</h2>
