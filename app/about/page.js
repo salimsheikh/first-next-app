@@ -3,7 +3,7 @@ const aboutPage = () => {
   return (
     <div> 
       <Navbar />
-      <h1>About Page</h1>
+      <h1 className='page-heading'>About Page</h1>
     </div>
   );
 }
