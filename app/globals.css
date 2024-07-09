@@ -119,8 +119,6 @@ h1.page-heading{
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-
-
   
   .post h2.blog-title{
     margin: 0 0 10px 0;
@@ -166,7 +164,13 @@ h1.page-heading{
 .navigation-links {
   margin-top: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between;  
+  align-items: center;
+  margin-right: 0;
+
+  & > :only-child {
+    margin-left: auto; /* Align single child to the right */
+  }
 
   a {
     margin-right: 20px;
