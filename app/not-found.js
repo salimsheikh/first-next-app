@@ -10,8 +10,8 @@ const NotFound = () => {
    useEffect(() => {
     // Example of redirecting to home after 5 seconds
      const timer = setTimeout(() => {
-       router.push('/');
-     }, 3000);
+        router.push('/');
+     }, 300000);
 
      return () => clearTimeout(timer);
 

@@ -1,9 +1,9 @@
-import Link from 'next/link';
 import Navbar from '../components/Navbar';
 const aboutPage = () => {
   return (
     <div> 
       <Navbar />
+      <h1>About Posts</h1>
     </div>
   );
 }
